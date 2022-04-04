@@ -1,27 +1,31 @@
-﻿/*using System;
+﻿using System;
 
+/*
 public class ValidParentheses
 {
 	public static void Main()
 	{
-		string result = "";
-		string input = "(()(()";
-		char[] arr= input.ToCharArray();
+		String input = "hi(hi)(";
+		string r = "";
+		if (input.Length == 0) r = "FALSE";//return false;
+		if (!(input.Contains('(') || input.Contains(')'))) r = "FALSE";
+		
 
-		Stack<char> st = new Stack<char>();
-		if (arr[0] == ')') result= "FALSE";
+		//string input = "()";
+		char[] arr = input.ToCharArray();
 
-		foreach(char c in arr)
-        {
-			if (c == '(') st.Push(c);
-			else if (c == ')' && st.Count() != 0) st.Pop();
-			else
-			{
-				result = "false";
-				break;
-			}
+		int result = 0;
+
+		for (int i = 0; i < arr.Count() && result >= 0; i++)
+		{
+			char c = arr[i];
+			if (c == '(') result += 1;
+			else if (c == ')') result -= 1;
+			//ako e bilo sto drugo, ne pravi nisto
+
 		}
-		if (st.Count() == 0) { result = "true"; }
-		else result = "false";
+
+		 if(result == 0) r = "TRUE";
+		 else r = "FALSE";
 	}
 }*/
