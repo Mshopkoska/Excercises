@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
-
+/*
 public static class Kata
 {
     public static Boolean isAnagram(String word1, String word2)
@@ -47,3 +47,4 @@ public static class Kata
         return resultList;
     }
 }
+*/

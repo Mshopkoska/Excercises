@@ -4,45 +4,74 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-/*
+using System.Text.RegularExpressions;
+
+
 namespace Excercises.Weight_for_weight
-{
-    internal class WeightSort
+{    public class WeightSort
     {
+
+        public long orginalWeight { get; set; }
+        public long scalledWeight { get; set; }
+
+        class MyComparer : IComparer<WeightSort>
+        {
+            public int Compare(WeightSort x, WeightSort y)
+            {
+                if (x.scalledWeight == y.scalledWeight)
+                {
+                    string xx = x.orginalWeight.ToString();
+                    string yy = y.orginalWeight.ToString();
+
+                    return xx.CompareTo(yy);
+                }
+
+                else return x.scalledWeight.CompareTo(y.scalledWeight);
+            }
+        }
+        public override string ToString()
+        {
+            return orginalWeight.ToString();
+        }
+
         public static int sum(string num)
         {
-            char[] digits = num.ToCharArray(); 
-            int sum = 0;   
-            foreach(char c in digits)
+            char[] digits = num.ToCharArray();
+            int sum = 0;
+            foreach (char c in digits)
             {
-                sum+= int.Parse(c.ToString()); ;  
+                sum += int.Parse(c.ToString()); ;
             }
             return sum;
         }
 
-        public static void Main()
+        public static string orderWeight(string strng)
         {
-            string strng = "11 11 2000 10003 22 123 1234000 44444444 9999";
-            string[] splitted  = strng.Split(' ');
+            if (strng.Count() == 0 || strng == "" || strng == null) return "";
 
-            Hashtable ht = new Hashtable();  //key ke bide vistinskata tezhina, value e novata 
-            foreach(string s in splitted)
+            var rx = new Regex(@"\s+", RegexOptions.Compiled);
+            string[] splitted = rx.Split(strng);
+
+            List<WeightSort> weightList = new List<WeightSort>();
+            foreach (string s in splitted)
             {
-                int newWeight = sum(s);
-                ht[s] = newWeight;
+                long newWeight = sum(s);
+                WeightSort w = new WeightSort();
+                w.orginalWeight = long.Parse(s);
+                w.scalledWeight = newWeight;
+
+                weightList.Add(w);
             }
 
-            string[] arrKey = new string[ht.Count];
-            int[] arrValue = new int[ht.Count];
-            ht.Keys.CopyTo(arrKey, 0);
-            ht.Values.CopyTo(arrValue, 0);
-
-            Array.Sort(arrValue, arrKey);
-            string[] arrKey2 = arrKey;
-
-            string result = string.Join(" ", arrKey2);
-
+            weightList.Sort(new MyComparer());
+            string[] result = new string[weightList.Count];
+            int i = 0;
+            foreach (WeightSort w in weightList)
+            {
+                result[i++] = w.ToString();
+            }
+            string finalResult = string.Join(" ", result);
+            return finalResult;
         }
     }
 }
-*/
