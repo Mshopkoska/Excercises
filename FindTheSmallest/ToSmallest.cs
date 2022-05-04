@@ -8,7 +8,6 @@ namespace Excercises.FindTheSmallest
 {
     internal class ToSmallest
     {
-
         public static long[] Smallest(long n)
         {
             string s = n.ToString();

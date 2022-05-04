@@ -1,0 +1,12 @@
+﻿
+https://www.codewars.com/kata/599b1a4a3c5292b4cc0000d5/train/csharp
+
+There are exactly eleven palindromes below one-thousand that can be written as consecutive square sums. 
+Note that 1 = 0^2 + 1^2 has not been included as this problem is concerned with the squares of positive integers.
+
+Given an input n, find the count of all the numbers less than n that are both palindromic and can be written as the
+sum of consecutive squares.
+
+For instance: values(1000) = 11. See test examples for more cases.
+
+Good luck!
